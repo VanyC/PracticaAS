@@ -22,6 +22,7 @@ import javax.persistence.Entity;
 @Entity
 @Table(name = "hospital", catalog = "practicaas")
 public class Hospital implements Serializable {
+    
     @Id
     private String nom;
     @Column(name="adreca")
