@@ -17,7 +17,7 @@ public class Habitació {
     }
     
     public int getNumHabitacio(){
-        return this.numero;
+        return numero;
     }
     
     public void vincula(Ingres i){
