@@ -12,4 +12,7 @@ public class Hospital {
     private String nom;
     private String adreça;
     private String descripcio;
+    private Sanitari[] sanitari;
+    private Especialitat[] esp;
+    private Habitacio[] hab;
 }

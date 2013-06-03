@@ -10,4 +10,5 @@ package DomainLayer.DomainModel;
  */
 public class Sanitari extends Persona{
     private String codiEmpleat;
+    private Hospital hosp;
 }

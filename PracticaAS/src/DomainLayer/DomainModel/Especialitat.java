@@ -10,4 +10,7 @@ package DomainLayer.DomainModel;
  */
 public class Especialitat {
     private String nom;
+    private Hospital[] hosp;
+    private Habitacio[] hab;
+    private Metge[] metg;
 }

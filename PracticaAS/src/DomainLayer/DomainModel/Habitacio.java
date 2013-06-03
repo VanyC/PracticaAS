@@ -10,4 +10,6 @@ package DomainLayer.DomainModel;
  */
 public class Habitacio {
     private int numero;
+    private Especialitat e;
+    private Ingres[] ingres;
 }

@@ -10,4 +10,5 @@ package DomainLayer.DomainModel;
  */
 public class Metge extends Sanitari{
     private String categoria;
+    private Especialitat e;
 }
