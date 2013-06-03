@@ -4,13 +4,10 @@
  */
 package practicaas.Domini;
 
-import java.util.Date;
-
 /**
  *
  * @author Sandra
  */
-public class Ingres {
-    private Date dataInici;
-    private Date dataAlta;
+public class Infermera extends Sanitari{
+    private String torn;
 }
