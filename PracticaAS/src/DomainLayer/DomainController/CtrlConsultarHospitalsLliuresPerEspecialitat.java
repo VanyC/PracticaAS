@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package practicaas.Domini;
+package DomainLayer.DomainController;
 
 /**
  *
  * @author Sandra
  */
-public class Metge extends Sanitari{
-    private String categoria;
+public class CtrlConsultarHospitalsLliuresPerEspecialitat {
+    
 }

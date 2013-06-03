@@ -2,12 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package practicaas.Domini;
+package DomainLayer.DomainController;
 
 /**
  *
  * @author Sandra
  */
-public class Sanitari extends Persona{
-    private String codiEmpleat;
+public class CtrlAssignarMetgeAUnIngres {
+    private String nomH;
+    private String nomE;
 }
