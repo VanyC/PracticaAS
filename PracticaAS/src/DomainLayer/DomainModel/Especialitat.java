@@ -4,13 +4,24 @@
  */
 package DomainLayer.DomainModel;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Sandra
  */
 public class Especialitat {
     private String nom;
-    private Hospital[] hosp;
-    private Habitacio[] hab;
-    private Metge[] metg;
+    private ArrayList<Hospital> hosp;
+    private ArrayList<Habitacio> hab;
+    private ArrayList<Metge> metg;
+    
+    public String getNomEspecialitat(){
+        return nom;
+    }
+    
+    public boolean teEspecialitat(String nomEsp){
+        if (nomEsp.equals(nom)) return true;
+        return false;
+    }
 }

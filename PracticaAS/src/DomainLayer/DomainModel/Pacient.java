@@ -4,6 +4,8 @@
  */
 package DomainLayer.DomainModel;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Sandra
@@ -11,4 +13,9 @@ package DomainLayer.DomainModel;
 public class Pacient extends Persona{
     private String nTS;
     private String email;
+    private ArrayList<Ingres> ingres;
+    
+    public String getEmail(){
+        return email;
+    }
 }

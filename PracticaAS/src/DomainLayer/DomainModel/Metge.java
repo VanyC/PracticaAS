@@ -4,6 +4,8 @@
  */
 package DomainLayer.DomainModel;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Sandra
@@ -11,4 +13,5 @@ package DomainLayer.DomainModel;
 public class Metge extends Sanitari{
     private String categoria;
     private Especialitat e;
+    private ArrayList<Ingres> ingres;
 }

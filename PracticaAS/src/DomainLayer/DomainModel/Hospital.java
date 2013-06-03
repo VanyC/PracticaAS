@@ -4,6 +4,8 @@
  */
 package DomainLayer.DomainModel;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Sandra
@@ -12,7 +14,7 @@ public class Hospital {
     private String nom;
     private String adreça;
     private String descripcio;
-    private Sanitari[] sanitari;
-    private Especialitat[] esp;
-    private Habitacio[] hab;
+    private ArrayList<Sanitari> sanitari;
+    private ArrayList<Especialitat> esp;
+    private ArrayList<Habitacio> hab;
 }

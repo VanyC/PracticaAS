@@ -4,6 +4,9 @@
  */
 package DomainLayer.DomainModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Sandra
@@ -11,5 +14,17 @@ package DomainLayer.DomainModel;
 public class Habitacio {
     private int numero;
     private Especialitat e;
-    private Ingres[] ingres;
+    private ArrayList<Ingres> ingres = new ArrayList<Ingres>();
+    
+    public int getNumHabitacio(){
+        return numero;
+    }
+    
+    public String getEspecialitatHabitacio(){
+        return e.getNomEspecialitat();
+    }
+    
+    public void vincula(Ingres i){
+        ingres.add(i);
+    }
 }
