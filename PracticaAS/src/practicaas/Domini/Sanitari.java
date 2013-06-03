@@ -9,5 +9,5 @@ package practicaas.Domini;
  * @author Sandra
  */
 public class Sanitari extends Persona{
-    private String codiempleat;
+    private String codiEmpleat;
 }
