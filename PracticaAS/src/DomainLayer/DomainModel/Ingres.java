@@ -44,6 +44,30 @@ public class Ingres {
         return m;
     }
     
+    public void setDataInici(Date dat){
+        this.dataInici = dat;
+    }
+    
+    public void setDataAlta(Date dat){
+        this.dataAlta = dat;
+    }
+    
+    public void setHabitacio(Habitacio hab){
+        this.hab = hab;
+    }
+    
+    public void setHospital(Hospital h){
+        this.hosp = h;
+    }
+    
+    public void setMetge(Metge m){
+        this.m = m;
+    }
+    
+    public void setPacient(Pacient p){
+        this.p = p;
+    }
+    
     public boolean comprovarHabitacioLliure(){
         if (dataAlta == null) return false;
         return true;
