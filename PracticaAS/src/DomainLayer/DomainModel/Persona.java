@@ -12,6 +12,8 @@ public class Persona {
     private String dni;
     private String nom;
     
+    public Persona(){}
+    
     public Pair<String,String> obteDadesPersona(){
         Pair<String,String> dp = new Pair<String,String>(this.dni,this.nom);
         return dp;
