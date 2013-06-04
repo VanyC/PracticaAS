@@ -4,6 +4,7 @@
  */
 package DomainLayer.DomainController;
 
+import DomainLayer.DomainModel.InformesSanitatServAdapter;
 /**
  *
  * @author Sandra
@@ -14,4 +15,12 @@ public class CtrlIngressarPacient {
     private int numHab;
     private String nTS;
     private String dniM;
+    
+    public void enviarInformeIngres(){
+        //Pacient p = ControladorPacient.ins.getPacient(nTS);
+        
+        InformesSanitatServAdapter a = new InformesSanitatServAdapter();
+        //a.cosa()
+        a=null;
+    }
 }

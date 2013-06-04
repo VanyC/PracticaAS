@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://src" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://src">
+    <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://src">
+            <xs:element name="enviarInformeIngres">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="nomEsp" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="dataAvui" nillable="true" type="xs:date"/>
+                        <xs:element minOccurs="0" name="nomHosp" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numHab" type="xs:int"/>
+                        <xs:element minOccurs="0" name="nTS" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="dniMetge" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="emailPac" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="enviarInformeIngresResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="enviarInformeIngresRequest">
+        <wsdl:part name="parameters" element="ns:enviarInformeIngres"/>
+    </wsdl:message>
+    <wsdl:message name="enviarInformeIngresResponse">
+        <wsdl:part name="parameters" element="ns:enviarInformeIngresResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="InformesSanitatPortType">
+        <wsdl:operation name="enviarInformeIngres">
+            <wsdl:input message="ns:enviarInformeIngresRequest" wsaw:Action="urn:enviarInformeIngres"/>
+            <wsdl:output message="ns:enviarInformeIngresResponse" wsaw:Action="urn:enviarInformeIngresResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="InformesSanitatSoap11Binding" type="ns:InformesSanitatPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="enviarInformeIngres">
+            <soap:operation soapAction="urn:enviarInformeIngres" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="InformesSanitatSoap12Binding" type="ns:InformesSanitatPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="enviarInformeIngres">
+            <soap12:operation soapAction="urn:enviarInformeIngres" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="InformesSanitatHttpBinding" type="ns:InformesSanitatPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="enviarInformeIngres">
+            <http:operation location="enviarInformeIngres"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="InformesSanitat">
+        <wsdl:port name="InformesSanitatHttpSoap11Endpoint" binding="ns:InformesSanitatSoap11Binding">
+            <soap:address location="http://localhost:8080/ServeiSanitat/services/InformesSanitat.InformesSanitatHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="InformesSanitatHttpSoap12Endpoint" binding="ns:InformesSanitatSoap12Binding">
+            <soap12:address location="http://localhost:8080/ServeiSanitat/services/InformesSanitat.InformesSanitatHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="InformesSanitatHttpEndpoint" binding="ns:InformesSanitatHttpBinding">
+            <http:address location="http://localhost:8080/ServeiSanitat/services/InformesSanitat.InformesSanitatHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
