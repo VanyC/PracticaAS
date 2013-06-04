@@ -11,4 +11,20 @@ package DomainLayer.DomainModel;
 public class Persona {
     private String dni;
     private String nom;
+    
+    public Pair<String,String> obteDadesPersona(){
+        Pair<String,String> dp = new Pair<String,String>(this.dni,this.nom);
+        return dp;
+    }
+
+    private static class Pair<T0, T1> {
+        private final String dni;
+        private final String nom;
+
+        public Pair(String dni, String nom) {
+            this.dni = dni;
+            this.nom = nom;
+        }   
+        
+    }
 }
