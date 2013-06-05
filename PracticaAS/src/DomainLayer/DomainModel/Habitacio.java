@@ -16,6 +16,8 @@ public class Habitacio {
     private Especialitat e;
     private ArrayList<Ingres> ingres = new ArrayList<Ingres>();
     
+    public Habitacio(){}
+    
     public int getNumHabitacio(){
         return numero;
     }

@@ -10,4 +10,14 @@ package DomainLayer.DomainModel;
  */
 public class Infermera extends Sanitari{
     private String torn;
+    
+    public Infermera(){}
+    
+    public String getTorn(){
+        return torn;
+    }
+    
+    public void setTorn(String torn){
+        this.torn = torn;
+    }
 }

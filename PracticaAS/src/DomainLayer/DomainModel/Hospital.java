@@ -18,6 +18,52 @@ public class Hospital {
     private ArrayList<Especialitat> esp;
     private ArrayList<Habitacio> hab;
     
+    public Hospital(){}
+    
+    public String getNom(){
+        return nom;
+    }
+    
+    public String getAdreça(){
+        return adreça;
+    }
+    
+    public String getDescripcio(){
+        return descripcio;
+    }
+    
+    public ArrayList<Sanitari> getSanitaris(){
+        return sanitari;
+    }
+    
+    public ArrayList<Especialitat> getEspecialitats(){
+        return esp;
+    }
+    
+    public ArrayList<Habitacio> getHabitacions(){
+        return hab;
+    }
+    
+    public void setNom(String nom){
+        this.nom = nom;
+    }
+    
+    public void setAdreça(String adr){
+        this.adreça = adr;
+    }
+    
+    public void setSanitaris(ArrayList<Sanitari> san){
+        this.sanitari = san;
+    }
+    
+    public void setEspecialitats(ArrayList<Especialitat> esp){
+        this.esp = esp;
+    }
+    
+    public void setHabitacions(ArrayList<Habitacio> hab){
+        this.hab = hab;
+    }
+    
     //public boolean obteHospitalsLliures(nomEsp:String,out tupla)
     
     //public obteMetgesEspecialitat(nomEsp):Set(Tuple...

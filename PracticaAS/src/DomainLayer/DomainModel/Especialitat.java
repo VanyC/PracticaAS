@@ -16,6 +16,8 @@ public class Especialitat {
     private ArrayList<Habitacio> hab;
     private ArrayList<Metge> metg;
     
+    public Especialitat(){}
+    
     public String getNomEspecialitat(){
         return nom;
     }
