@@ -17,4 +17,8 @@ public class Hospital {
     private ArrayList<Sanitari> sanitari;
     private ArrayList<Especialitat> esp;
     private ArrayList<Habitacio> hab;
+    
+    //public boolean obteHospitalsLliures(nomEsp:String,out tupla)
+    
+    //public obteMetgesEspecialitat(nomEsp):Set(Tuple...
 }

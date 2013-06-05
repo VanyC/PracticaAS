@@ -14,4 +14,14 @@ public class Metge extends Sanitari{
     private String categoria;
     private Especialitat e;
     private ArrayList<Ingres> ingres;
+    
+    //obteDades
+    
+    public String getEspecialitatMetge(){
+        return e.getNomEspecialitat();
+    }
+    
+    public void assignarIngres(Ingres i){
+        ingres.add(i);
+    }
 }

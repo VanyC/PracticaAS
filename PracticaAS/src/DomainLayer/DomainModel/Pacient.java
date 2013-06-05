@@ -46,4 +46,8 @@ public class Pacient extends Persona{
     public void setIngressos(ArrayList<Ingres> ingres){
         this.ingres = ingres;
     }
+    
+    public boolean comprovarPacient(){
+        return true;
+    }
 }

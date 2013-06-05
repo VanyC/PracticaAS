@@ -24,4 +24,8 @@ public class Especialitat {
         if (nomEsp.equals(nom)) return true;
         return false;
     }
+    
+    //public obteHospitalsLliures()
+    
+    //public obteMetges():TupleType(dni:string,nom:String,categoria:String)
 }

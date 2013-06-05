@@ -84,4 +84,9 @@ public class Ingres {
         if (dataAlta == null) return true;
         return false;
     }
+    
+    public void assignarMetge(Metge m,Hospital h){
+        this.m = m;
+        this.hosp = h;
+    }
 }

@@ -27,4 +27,6 @@ public class Habitacio {
     public void vincula(Ingres i){
         ingres.add(i);
     }
+    
+    //public boolean comprovaHabitacio(nomEsp:String)
 }
