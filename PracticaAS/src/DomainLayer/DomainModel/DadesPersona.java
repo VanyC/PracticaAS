@@ -8,19 +8,9 @@ package DomainLayer.DomainModel;
  *
  * @author Sandra
  */
-public class Persona {
+public class DadesPersona {
     private String dni;
     private String nom;
-    
-    public Persona(){}
-    
-    public String getDni(){
-        return dni;
-    }
-    
-    public String getNom(){
-        return nom;
-    }
     
     public void setDni(String dni){
         this.dni = dni;
@@ -28,12 +18,5 @@ public class Persona {
     
     public void setNom(String nom){
         this.nom = nom;
-    }
-    
-    public DadesPersona obteDadesPersona(){
-        DadesPersona dp = new DadesPersona();
-        dp.setDni(this.dni);
-        dp.setNom(this.nom);
-        return dp;
     }
 }
