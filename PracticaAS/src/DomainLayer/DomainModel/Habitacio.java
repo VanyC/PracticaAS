@@ -28,5 +28,14 @@ public class Habitacio {
         ingres.add(i);
     }
     
-    //public boolean comprovaHabitacio(nomEsp:String)
+    public boolean comprovarHabitacio(String nomEsp){
+        boolean b = false;
+        String ne = e.getNomEspecialitat();
+        if (ne.equals(nomEsp)){
+            for (Ingres i:ingres){
+                b = i.comprovarHabitacioLliure();
+            }
+        }
+        return b;
+    }
 }
