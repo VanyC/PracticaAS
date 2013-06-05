@@ -32,8 +32,8 @@ public class Persona {
     
     public DadesPersona obteDadesPersona(){
         DadesPersona dp = new DadesPersona();
-        dp.setDni(this.dni);
-        dp.setNom(this.nom);
+        dp.dni = this.dni;
+        dp.nom = this.nom;
         return dp;
     }
 }

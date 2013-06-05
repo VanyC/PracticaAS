@@ -69,8 +69,8 @@ public class Ingres {
     }
     
     public boolean comprovarHabitacioLliure(){
-        if (dataAlta == null) return false;
-        return true;
+        if (dataAlta != null) return true;
+        return false;
     }
     
     public void crearIngres(Hospital h, Habitacio hab, Date dat){
@@ -86,7 +86,13 @@ public class Ingres {
     }
     
     public void assignarMetge(Metge m,Hospital h){
+        //if (this.dataAlta <> null) activa altaIngrés
+        //if (this.hosp <> h) activa noHospitalIngrés
+        String esp_hab = hab.getEspecialitatHabitacio();
+        //if (m.size() > 0) activa IngresAmbMetge
+        String esp_met = m.getEspecialitatMetge();
+        //if (esp_hab != esp_met) activa noCoincideixenEspecialitats
+        m.assignarIngres(this);
         this.m = m;
-        this.hosp = h;
     }
 }

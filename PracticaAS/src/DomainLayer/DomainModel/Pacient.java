@@ -48,6 +48,11 @@ public class Pacient extends Persona{
     }
     
     public boolean comprovarPacient(){
-        return true;
+        boolean b = false;
+        for (Ingres i:ingres){
+            b = i.pacientIngressat();
+        }
+        // if(b==true) activa PacientIngressat
+        return b;
     }
 }
