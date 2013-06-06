@@ -64,7 +64,24 @@ public class Hospital {
         this.hab = hab;
     }
     
-    //public boolean obteHospitalsLliures(nomEsp:String,out tupla)
+    public boolean obteHospitalsLliures(String nomEsp){
+        boolean b = false;
+        for (Habitacio h:hab){
+            b = h.comprovarHabitacio(nomEsp);
+            if (b == true) {
+                
+            }
+        }
+        return b;
+    }
     
-    //public obteMetgesEspecialitat(nomEsp):Set(Tuple...
+    public ArrayList<InfoMetge> obteMetgesEspecialitat(String nomEsp){
+        ArrayList<InfoMetge> dm = new ArrayList<InfoMetge>();
+        for (Especialitat e: esp){
+            boolean b = e.teEspecialitat(nomEsp);
+            //if (b == false) activa noEspecialitatEnHospital
+            
+        }
+        return dm;
+    }
 }
