@@ -27,7 +27,13 @@ public class Especialitat {
         return false;
     }
     
-    //public obteHospitalsLliures()
+    public ArrayList<InfoHospital> obteHospitalsLliures(){
+        ArrayList<InfoHospital> dh = new ArrayList<InfoHospital>();
+        for(Hospital h:hosp){
+            
+        }
+        return dh;
+    }
     
     //public obteMetges():TupleType(dni:string,nom:String,categoria:String)
 }
