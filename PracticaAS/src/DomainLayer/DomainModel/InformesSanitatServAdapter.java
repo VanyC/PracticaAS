@@ -19,7 +19,7 @@ public class InformesSanitatServAdapter implements IInformesSanitatServAdapter {
 
     @Override
     public boolean enviarInformeIngres(String nomEsp, Date dataAvui, String nomHosp, int numHab, String nTS, String dniMetge, String emailPac) {
-        //cosas...
+
         boolean flag=false;
         try {
             InformesSanitat informesSanitat = new InformesSanitat();

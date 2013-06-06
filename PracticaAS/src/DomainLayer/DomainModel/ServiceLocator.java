@@ -1,4 +1,4 @@
-package DomainLayer.ServiceLocator;
+package DomainLayer.DomainModel;
 
 public class ServiceLocator {
     ServiceLocator instance;
