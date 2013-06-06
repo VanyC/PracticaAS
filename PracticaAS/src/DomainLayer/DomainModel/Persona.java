@@ -30,8 +30,8 @@ public class Persona {
         this.nom = nom;
     }
     
-    public DadesPersona obteDadesPersona(){
-        DadesPersona dp = new DadesPersona();
+    public InfoPersona obteDadesPersona(){
+        InfoPersona dp = new InfoPersona();
         dp.dni = this.dni;
         dp.nom = this.nom;
         return dp;
