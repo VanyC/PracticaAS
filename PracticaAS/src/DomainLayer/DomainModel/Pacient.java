@@ -47,12 +47,17 @@ public class Pacient extends Persona{
         this.ingres = ingres;
     }
     
-    public boolean comprovarPacient(){
+    public boolean comprovarPacient() throws Exception{
         boolean b = false;
-        for (Ingres i:ingres){
-            b = i.pacientIngressat();
+        try{
+            for (Ingres i:ingres){
+                b = i.pacientIngressat();
+            }
+            if(b==true) throw new Exception("PacientIngressat");
         }
-        // if(b==true) activa PacientIngressat
+        catch(Exception exc){
+            System.out.println("Error: " + exc.getMessage());
+        }
         return b;
     }
 }
