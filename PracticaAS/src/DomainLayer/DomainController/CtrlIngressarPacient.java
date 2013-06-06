@@ -40,7 +40,7 @@ public class CtrlIngressarPacient {
         return llistat;
     }
     
-    public void creaIngres(String nomHosp, int numHab, String nTs){
+    public void creaIngres(String nomHosp, int numHab, String nTs) throws Exception{
         
         CtrlDataFactoria factoria = CtrlDataFactoria.getInstance();
         CtrlHospital ch = factoria.getCtrlHospital();

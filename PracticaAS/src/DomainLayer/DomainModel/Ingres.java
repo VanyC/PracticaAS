@@ -73,7 +73,7 @@ public class Ingres {
         return false;
     }
     
-    public void crearIngres(Hospital h, Habitacio hab, Pacient p, Date dat){
+    public void crearIngres(Hospital h, Habitacio hab, Pacient p, Date dat) throws Exception{
        /* Ingres i = new Ingres();
         i.hosp = h;
         i.hab = hab;
