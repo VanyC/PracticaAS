@@ -6,20 +6,25 @@ package DomainLayer.DomainController;
 
 import java.util.ArrayList;
 
+import DomainLayer.DataInterface.CtrlDataFactoria;
+import DomainLayer.DataInterface.CtrlEspecialitat;
+import DomainLayer.DomainModel.Especialitat;
+import DomainLayer.DomainModel.InfoHospital;
 /**
  *
  * @author Sandra
  */
 public class CtrlConsultarHospitalsLliuresPerEspecialitat {
-    public static class Hospitals{
-        private static String nom;
-        private static String adr;
-        private static String desc;
-        private static ArrayList<Integer> habLliu;
-    }
     
-    public ArrayList<Hospitals> getHospitalsLliuresPerEspecialitat(String nomEsp){
-        ArrayList<Hospitals> llist = new ArrayList<Hospitals>();
-        return llist;
+    public ArrayList<InfoHospital> getHospitalsLliuresPerEspecialitat(String nomEsp){
+        
+        CtrlDataFactoria factoria = CtrlDataFactoria.getInstance();
+        
+        CtrlEspecialitat ce = factoria.getCtrlEspecialitat();
+        Especialitat e = ce.getEspecialitat(nomEsp);
+        
+        ArrayList<InfoHospital> llistat = e.obteHospitalsLliures();
+        
+        return llistat;
     }
 }
