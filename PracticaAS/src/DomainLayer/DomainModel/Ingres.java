@@ -73,11 +73,18 @@ public class Ingres {
         return false;
     }
     
-    public void crearIngres(Hospital h, Habitacio hab, Date dat){
+    public void crearIngres(Hospital h, Habitacio hab, Pacient p, Date dat){
+       /* Ingres i = new Ingres();
+        i.hosp = h;
+        i.hab = hab;
+        i.dataInici = dat;*/
+        boolean b = p.comprovarPacient();
         Ingres i = new Ingres();
         i.hosp = h;
         i.hab = hab;
+        i.p = p;
         i.dataInici = dat;
+        hab.vincula(i);
     }
     
     public boolean pacientIngressat(){
