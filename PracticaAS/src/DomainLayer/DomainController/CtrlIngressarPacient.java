@@ -16,11 +16,11 @@ import DomainLayer.DomainModel.Habitacio;
 import DomainLayer.DomainModel.Hospital;
 import DomainLayer.DomainModel.Pacient;
 import DomainLayer.DomainModel.Ingres;
-import DomainLayer.DomainModel.InformesSanitatServAdapter;
+import DomainLayer.DomainModel.IInformesSanitatServAdapter;
 
 /**
  *
- * @author Sandra
+ * @author Roberto
  */
 public class CtrlIngressarPacient {
     private String nomE;
@@ -60,20 +60,28 @@ public class CtrlIngressarPacient {
         nTS = nTs;
     }
     
-    public ArrayList<InfoMetge> mostraMetgesPerEspecialitat(){
-        // crear otro ctrl
-        
+    public ArrayList<InfoMetge> mostraMetgesPerEspecialitat() throws Exception{
+
         ctrlA = new CtrlAssignarMetgeAUnIngres();
-        ArrayList<InfoMetge> metges = ctrlA.getMetgesHospitalPerEspecialitat(nomH, nomE);
-        
+        ArrayList<InfoMetge> metges;
+        try{
+           metges = ctrlA.getMetgesHospitalPerEspecialitat(nomH, nomE);
+        }
+        catch(Exception exc){
+            throw exc;
+        }
         return metges;
     }
     
-    public void assignarMetgeAInres(String dni){
+    public void assignarMetgeAInres(String dni) throws Exception{
         
         Date data = new Date();
-        ctrlA.setMetgeAIngres(dni, nTS, data);
-        
+        try{
+           ctrlA.setMetgeAIngres(dni, nTS, data);
+        }
+        catch(Exception exc){
+            throw exc;
+        }
         dniM = dni;
     }
     
@@ -86,7 +94,7 @@ public class CtrlIngressarPacient {
         String email = p.getEmail();
         
         Factoria f = Factoria.getInstance();
-        InformeSanitatServAdapter iss = f.getInformeSanitatServ();
+        IInformesSanitatServAdapter iss = f.getInformeSanitatServ();
         
         Date dataAvui = new Date();
         

@@ -19,13 +19,13 @@ import DomainLayer.DomainModel.Metge;
 
 /**
  *
- * @author Sandra
+ * @author Roberto
  */
 public class CtrlAssignarMetgeAUnIngres {
     private String nomH;
     private String nomE;
     
-    public ArrayList<InfoMetge> getMetgesHospitalPerEspecialitat(String nomHosp, String nomEsp){
+    public ArrayList<InfoMetge> getMetgesHospitalPerEspecialitat(String nomHosp, String nomEsp) throws Exception{
         
         CtrlDataFactoria factoria = CtrlDataFactoria.getInstance();
         
@@ -34,7 +34,7 @@ public class CtrlAssignarMetgeAUnIngres {
         Hospital h = ch.getHospital(nomHosp);
         
         if (!ce.existeixEspecialitat(nomEsp)){
-            throw new noHiHaEspecialitat();
+            throw new Exception("noHiHaEspecialitat");
         }
         
         ArrayList<InfoMetge> llistat = h.obteMetgesEspecialitat(nomEsp);
@@ -44,7 +44,7 @@ public class CtrlAssignarMetgeAUnIngres {
         return llistat;
     }
     
-    public void setMetgeAIngres(String dni, String nTs, Date dataIni){
+    public void setMetgeAIngres(String dni, String nTs, Date dataIni) throws Exception{
         
         CtrlDataFactoria factoria = CtrlDataFactoria.getInstance();
         
@@ -55,8 +55,13 @@ public class CtrlAssignarMetgeAUnIngres {
         Ingres i = ci.getIngres(nTs,dataIni, nomH);
         Hospital h = ch.getHospital(nomH);
         Metge m = cm.getMetge(dni);
+        try{
+            i.assignarMetge(m,h);
+        }
+        catch(Exception exc){
+            throw exc;
+        }
         
-        i.assignarMetge(m,h);
         
     }
 }

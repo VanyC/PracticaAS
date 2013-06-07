@@ -12,7 +12,7 @@ import DomainLayer.DomainModel.Especialitat;
 import DomainLayer.DomainModel.InfoHospital;
 /**
  *
- * @author Sandra
+ * @author Roberto
  */
 public class CtrlConsultarHospitalsLliuresPerEspecialitat {
     
