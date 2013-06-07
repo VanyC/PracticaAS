@@ -15,12 +15,6 @@ public class Metge extends Sanitari{
     private Especialitat e;
     private ArrayList<Ingres> ingres;
     
-    public class DadesMetge{
-        public String dni;
-        public String nom;
-        public String cat;
-    }
-    
     public String getCategoria(){
         return categoria;
     }
@@ -41,9 +35,9 @@ public class Metge extends Sanitari{
         this.ingres = i;
     }
     
-    public DadesMetge obteDades(){
-        DadesMetge dm = new DadesMetge();
-        DadesPersona dp = this.obteDadesPersona();
+    public InfoMetge obteDades(){
+        InfoMetge dm = new InfoMetge();
+        InfoPersona dp = this.obteDadesPersona();
         dm.dni = dp.dni;
         dm.nom = dp.nom;
         dm.cat = this.categoria;

@@ -8,7 +8,8 @@ package DomainLayer.DomainModel;
  *
  * @author Sandra
  */
-public class DadesPersona {
+public class InfoMetge {
     public String dni;
     public String nom;
+    public String cat;
 }
