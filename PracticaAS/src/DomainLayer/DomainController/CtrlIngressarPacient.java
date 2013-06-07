@@ -16,6 +16,7 @@ import DomainLayer.DomainModel.Habitacio;
 import DomainLayer.DomainModel.Hospital;
 import DomainLayer.DomainModel.Pacient;
 import DomainLayer.DomainModel.Ingres;
+import DomainLayer.DomainModel.Factoria;
 import DomainLayer.DomainModel.IInformesSanitatServAdapter;
 
 /**
