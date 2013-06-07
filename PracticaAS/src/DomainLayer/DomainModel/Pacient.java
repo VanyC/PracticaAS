@@ -49,15 +49,11 @@ public class Pacient extends Persona{
     
     public boolean comprovarPacient() throws Exception{
         boolean b = false;
-        try{
-            for (Ingres i:ingres){
-                b = i.pacientIngressat();
-            }
-            if(b==true) throw new Exception("PacientIngressat");
+        for (Ingres i:ingres){
+            b = i.pacientIngressat();
         }
-        catch(Exception exc){
-            System.out.println("Error: " + exc.getMessage());
-        }
+        if(b==true) throw new Exception("PacientIngressat");
+        
         return b;
     }
 }
