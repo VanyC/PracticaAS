@@ -35,5 +35,13 @@ public class Especialitat {
         return dh;
     }
     
-    //public obteMetges():TupleType(dni:string,nom:String,categoria:String)
+    public ArrayList<InfoMetge> obteMetges(){
+        ArrayList<InfoMetge> dm = new ArrayList<InfoMetge>();
+        InfoMetge mtg;
+        for (Metge m: metg){
+            mtg = m.obteDades();
+            dm.add(mtg);
+        }
+        return dm;        
+    }
 }
