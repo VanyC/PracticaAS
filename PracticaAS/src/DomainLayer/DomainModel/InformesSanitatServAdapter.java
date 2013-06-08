@@ -16,21 +16,19 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * @author Vane
  */
 public class InformesSanitatServAdapter implements IInformesSanitatServAdapter {
-
+    
     @Override
     public boolean enviarInformeIngres(String nomEsp, Date dataAvui, String nomHosp, int numHab, String nTS, String dniMetge, String emailPac) {
-
+        
         boolean flag=false;
         try {
-            InformesSanitat informesSanitat = new InformesSanitat();
+            InformesSanitat informesSanitat = (InformesSanitat) ServiceLocator.getInstance().find("SvInformesSanitat");
             InformesSanitatPortType informesSanitatPT = informesSanitat.getInformesSanitatHttpSoap12Endpoint();
-            GregorianCalendar calendar = new GregorianCalendar(TimeZone.getDefault());
-            XMLGregorianCalendar da = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
-            calendar.setTime(dataAvui);
-            XMLGregorianCalendar dc = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
+            GregorianCalendar calendari = new GregorianCalendar(TimeZone.getDefault());
+            XMLGregorianCalendar dataActual = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendari);
            
-            flag = informesSanitatPT.enviarInformeIngres(nomEsp, da, nomHosp, numHab, nTS, dniMetge, emailPac);
-            //b = true;
+            flag = informesSanitatPT.enviarInformeIngres(nomEsp, dataActual, nomHosp, numHab, nTS, dniMetge, emailPac);
+
         } catch (DatatypeConfigurationException ex) {
         }
         return flag;

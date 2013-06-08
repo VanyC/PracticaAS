@@ -1,18 +1,20 @@
 package DomainLayer.DomainModel;
 
 public class ServiceLocator {
-    ServiceLocator instance;
+    static ServiceLocator instance;
 
     public ServiceLocator() {
-        if (instance==null) instance=new ServiceLocator();
+        
     }
 
-    public ServiceLocator getInstance() {
+    public static ServiceLocator getInstance() {
+        if (instance == null) instance = new ServiceLocator();
         return instance;
     }
     
-    public ServiceLocator find (String name){
-        return instance;
+    public Object find (String name){
+        if (name.equals("SvInformesSanitat")) return new InformesSanitat();
+        else return null;
     }
     
 }

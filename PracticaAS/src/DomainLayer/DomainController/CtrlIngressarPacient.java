@@ -74,7 +74,7 @@ public class CtrlIngressarPacient {
         return metges;
     }
     
-    public void assignarMetgeAInres(String dni) throws Exception{
+    public void assignarMetgeAIngres(String dni) throws Exception{
         
         Date data = new Date();
         try{
@@ -86,7 +86,7 @@ public class CtrlIngressarPacient {
         dniM = dni;
     }
     
-    public void enviarInformeIngres(){
+    public boolean enviarInformeIngres(){
         
         CtrlDataFactoria factoria = CtrlDataFactoria.getInstance();
         CtrlPacient cp = factoria.getCtrlPacient();
@@ -99,8 +99,8 @@ public class CtrlIngressarPacient {
         
         Date dataAvui = new Date();
         
-        iss.enviarInformeIngres(nomE, dataAvui, nomH, numH, nTS, dniM, email);
-        
+        boolean correcte = iss.enviarInformeIngres(nomE, dataAvui, nomH, numH, nTS, dniM, email);
+        return correcte;
     }
     
 }
