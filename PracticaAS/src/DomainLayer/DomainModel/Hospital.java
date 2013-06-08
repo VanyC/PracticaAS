@@ -77,16 +77,10 @@ public class Hospital {
     
     public ArrayList<InfoMetge> obteMetgesEspecialitat(String nomEsp) throws Exception{
         ArrayList<InfoMetge> dm = new ArrayList<InfoMetge>();
-        try{
-            for (Especialitat e: esp){
-                boolean b = e.teEspecialitat(nomEsp);
-                if (b == false) throw new Exception("noEspecialitatEnHospital");
-                //ArrayList<InfoMetge> dm = 
-            }
-            
-        }
-        catch(Exception exc){
-            System.out.println("Error: " + exc.getMessage());
+        for (Especialitat e: esp){
+            boolean b = e.teEspecialitat(nomEsp);
+            if (b == false) throw new Exception("noEspecialitatEnHospital");
+            //ArrayList<InfoMetge> dm = 
         }
         return dm;
         

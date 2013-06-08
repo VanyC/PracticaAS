@@ -93,19 +93,13 @@ public class Ingres {
     }
     
     public void assignarMetge(Metge m,Hospital h) throws Exception{
-        try{
-            if (this.dataAlta != null) throw new Exception("altaIngres");
-            if (this.hosp != h) throw new Exception("noHospitalIngres");
-            String esp_hab = hab.getEspecialitatHabitacio();
-            if (m != null) throw new Exception("ingresAmbMetge");
-            String esp_met = m.getEspecialitatMetge();
-            if (esp_hab != esp_met) throw new Exception("noCoincideixenEspecialitats");
-            m.assignarIngres(this);
-            this.m = m;
-        }
-        catch(Exception exc){
-            System.out.println("Error: " + exc.getMessage());
-        }
-        
-    }
+        if (this.dataAlta != null) throw new Exception("altaIngres");
+        if (this.hosp != h) throw new Exception("noHospitalIngres");
+        String esp_hab = hab.getEspecialitatHabitacio();
+        if (m != null) throw new Exception("ingresAmbMetge");
+        String esp_met = m.getEspecialitatMetge();
+        if (esp_hab != esp_met) throw new Exception("noCoincideixenEspecialitats");
+        m.assignarIngres(this);
+        this.m = m;
+   }
 }
