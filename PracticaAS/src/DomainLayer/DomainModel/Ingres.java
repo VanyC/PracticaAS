@@ -4,13 +4,14 @@
  */
 package DomainLayer.DomainModel;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Sandra
  */
-public class Ingres {
+public class Ingres implements Serializable {
     private Date dataInici;
     private Date dataAlta;
     private Habitacio hab;

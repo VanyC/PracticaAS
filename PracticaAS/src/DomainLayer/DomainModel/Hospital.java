@@ -5,18 +5,35 @@
 package DomainLayer.DomainModel;
 
 import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Entity;
 
 /**
  *
  * @author Sandra
  */
-public class Hospital {
+@Entity
+@Table(name = "hospital", catalog = "practicaas")
+public class Hospital implements Serializable {
+      @Id
     private String nom;
+      @Column(name="adreca")
     private String adreça;
+      @Column(name="descripcio")
     private String descripcio;
     private ArrayList<Sanitari> sanitari;
     private ArrayList<Especialitat> esp;
-    private ArrayList<Habitacio> hab;
+        @OneToMany(targetEntity=Habitacio.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "hospitalNom", referencedColumnName = "nom")
+    private List<Habitacio> hab;
     
     public Hospital(){}
     
@@ -40,7 +57,7 @@ public class Hospital {
         return esp;
     }
     
-    public ArrayList<Habitacio> getHabitacions(){
+    public List<Habitacio> getHabitacions(){
         return hab;
     }
     

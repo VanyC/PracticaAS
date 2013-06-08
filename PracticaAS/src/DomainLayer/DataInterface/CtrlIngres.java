@@ -12,6 +12,6 @@ import DomainLayer.DomainModel.Ingres;
  * @author Roberto
  */
 public interface CtrlIngres {
-    public Ingres getIngres(String nTs, Date date, String nomH);
+    public Ingres getIngres(String nTs, Date date);
 }
 

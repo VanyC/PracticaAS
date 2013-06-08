@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package practicaas;
+package DomainLayer.DomainModel;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -16,15 +16,15 @@ import javax.persistence.Embeddable;
 public class CompoundKeyHabitacio implements Serializable { //al hacer guardar se puede transformar en 1 i 0
 
     @Column(name="numero")
-    private String numero;
+    private int numero;
     @Column(name="hospitalNom")
     private String hospitalNom;
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -36,7 +36,7 @@ public class CompoundKeyHabitacio implements Serializable { //al hacer guardar s
         this.hospitalNom = nom;
     }
 
-    public CompoundKeyHabitacio(String numero, String nom) {
+    public CompoundKeyHabitacio(int numero, String nom) {
         this.numero = numero;
         this.hospitalNom = nom;
     }

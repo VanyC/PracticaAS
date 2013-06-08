@@ -6,20 +6,28 @@ package DomainLayer.DomainModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Table;
+import javax.persistence.Entity;
 
 /**
  *
  * @author Sandra
  */
-public class Habitacio {
-    private int numero;
-    private Especialitat e;
+@Entity
+@Table(name = "habitacio", catalog = "practicaas")
+public class Habitacio  implements Serializable {
+    
+     @EmbeddedId
+    CompoundKeyHabitacio compoundkey = new CompoundKeyHabitacio();
     private ArrayList<Ingres> ingres = new ArrayList<Ingres>();
+    public Especialitat e;
     
     public Habitacio(){}
     
-    public int getNumHabitacio(){
-        return numero;
+    public CompoundKeyHabitacio getCompoundKeyHabitacio(){
+        return compoundkey;
     }
     
     public String getEspecialitatHabitacio(){

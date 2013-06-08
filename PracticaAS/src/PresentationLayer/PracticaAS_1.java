@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package practicaas;
+package PresentationLayer;
 
 import java.util.ArrayList;
 import org.hibernate.Session;

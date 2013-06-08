@@ -52,7 +52,7 @@ public class CtrlAssignarMetgeAUnIngres {
         CtrlHospital ch = factoria.getCtrlHospital();
         CtrlMetge cm = factoria.getCtrlMetge();
         
-        Ingres i = ci.getIngres(nTs,dataIni, nomH);
+        Ingres i = ci.getIngres(nTs,dataIni);
         Hospital h = ch.getHospital(nomH);
         Metge m = cm.getMetge(dni);
         try{
