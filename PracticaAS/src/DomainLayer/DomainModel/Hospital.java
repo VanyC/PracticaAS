@@ -81,12 +81,16 @@ public class Hospital implements Serializable {
         this.hab = hab;
     }
     
-    public boolean obteHospitalsLliures(String nomEsp){
+    public boolean obteHospitalsLliures(String nomEsp, ArrayList<InfoHospital> tupla){
         boolean b = false;
+        ArrayList<Integer> habs = new ArrayList<Integer>();
         for (Habitacio h:hab){
             b = h.comprovarHabitacio(nomEsp);
             if (b == true) {
-                
+                //Integer num = h.getNumHabitacio();
+               // habs.add(num);
+               // if(habs.size()!=0){
+                //  
             }
         }
         return b;
