@@ -81,12 +81,21 @@ public class Hospital implements Serializable {
         this.hab = hab;
     }
     
-    public boolean obteHospitalsLliures(String nomEsp){
+    public boolean obteHospitalsLliures(String nomEsp, InfoHospital tupla){
         boolean b = false;
+        CompoundKeyHabitacio ch;
+        tupla = new InfoHospital();
         for (Habitacio h:hab){
             b = h.comprovarHabitacio(nomEsp);
             if (b == true) {
-                
+                ch = h.getCompoundKeyHabitacio();
+                Integer num = ch.getNumero();
+                tupla.hab.add(num);
+            }
+            if(tupla.hab.size()!=0){
+                tupla.nom = this.nom;
+                tupla.adreça = this.adreça;
+                tupla.descripcio = this.descripcio;
             }
         }
         return b;

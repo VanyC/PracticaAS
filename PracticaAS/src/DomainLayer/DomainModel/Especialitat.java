@@ -48,8 +48,11 @@ public class Especialitat {
     
     public ArrayList<InfoHospital> obteHospitalsLliures(){
         ArrayList<InfoHospital> dh = new ArrayList<InfoHospital>();
+        InfoHospital ih = new InfoHospital();
+        boolean b = false;
         for(Hospital h:hosp){
-            
+            b = h.obteHospitalsLliures(nom, ih);
+            if (b == true)dh.add(ih);
         }
         return dh;
     }
