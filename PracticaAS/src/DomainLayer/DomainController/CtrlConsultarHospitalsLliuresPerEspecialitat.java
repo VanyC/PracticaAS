@@ -14,16 +14,23 @@ import DomainLayer.DomainModel.InfoHospital;
  *
  * @author Roberto
  */
-public class CtrlConsultarHospitalsLliuresPerEspecialitat {
+public class CtrlConsultarHospitalsLliuresPerEspecialitat{
     
-    public ArrayList<InfoHospital> getHospitalsLliuresPerEspecialitat(String nomEsp){
+    public ArrayList<InfoHospital> getHospitalsLliuresPerEspecialitat(String nomEsp)  throws Exception{
         
         CtrlDataFactoria factoria = CtrlDataFactoria.getInstance();
         
         CtrlEspecialitat ce = factoria.getCtrlEspecialitat();
         Especialitat e = ce.getEspecialitat(nomEsp);
         
-        ArrayList<InfoHospital> llistat = e.obteHospitalsLliures();
+        ArrayList<InfoHospital> llistat;
+        
+         try{
+            llistat = e.obteHospitalsLliures();
+        }
+        catch(Exception exc){
+            throw exc;
+        }
         
         return llistat;
     }
