@@ -27,7 +27,7 @@ public class Especialitat {
         return false;
     }
     
-    public ArrayList<InfoHospital> obteHospitalsLliures(){
+    public ArrayList<InfoHospital> obteHospitalsLliures() throws Exception{
         ArrayList<InfoHospital> dh = new ArrayList<InfoHospital>();
         InfoHospital ih = new InfoHospital();
         boolean b = false;
@@ -35,6 +35,7 @@ public class Especialitat {
             b = h.obteHospitalsLliures(nom, ih);
             if (b == true)dh.add(ih);
         }
+        if (dh.size()!=0) throw new Exception("NoHiHaHospitals");
         return dh;
     }
     
