@@ -106,7 +106,7 @@ public class Hospital implements Serializable {
         for (Especialitat e: esp){
             boolean b = e.teEspecialitat(nomEsp);
             if (b == false) throw new Exception("noEspecialitatEnHospital");
-            //ArrayList<InfoMetge> dm = 
+            dm = e.obteMetges();
         }
         return dm;
         
