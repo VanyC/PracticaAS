@@ -31,7 +31,7 @@ public class Hospital implements Serializable {
     private String descripcio;
     private ArrayList<Sanitari> sanitari;
     private ArrayList<Especialitat> esp;
-        @OneToMany(targetEntity=Habitacio.class, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity=Habitacio.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "hospitalNom", referencedColumnName = "nom")
     private List<Habitacio> hab;
     
