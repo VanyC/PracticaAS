@@ -31,7 +31,7 @@ public class CtrlIngressarPacient {
     private String dniM;
     private CtrlAssignarMetgeAUnIngres ctrlA;
     
-    public ArrayList<InfoHospital> obteHospitalsLliuresPerEspecialitat(String nomEsp){
+    public ArrayList<InfoHospital> obteHospitalsLliuresPerEspecialitat(String nomEsp) throws Exception{
         
         CtrlConsultarHospitalsLliuresPerEspecialitat ctrlC = new CtrlConsultarHospitalsLliuresPerEspecialitat();
         ArrayList<InfoHospital> llistat = ctrlC.getHospitalsLliuresPerEspecialitat(nomEsp);
