@@ -4,11 +4,17 @@
  */
 package DomainLayer.DomainModel;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
 /**
  *
  * @author Sandra
  */
-public class Sanitari extends Persona{
+@Entity
+public class Sanitari extends Persona implements Serializable{
+    @Column(unique=true)
     private String codiEmpleat;
     private Hospital hosp;
     

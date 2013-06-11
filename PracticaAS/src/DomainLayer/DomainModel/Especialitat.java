@@ -5,15 +5,18 @@
 package DomainLayer.DomainModel;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -24,16 +27,16 @@ import javax.persistence.Table;
 public class Especialitat {
     @Id
     private String nom;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "EspecialitatHospital", 
-            joinColumns = { @JoinColumn(name = "especialitatNom") }, inverseJoinColumns = { @JoinColumn(name = "hospitalNom") })
-    private ArrayList<Hospital> hosp;        
-    @ManyToOne(targetEntity=Habitacio.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "nomEsp", referencedColumnName = "nom")
-    private ArrayList<Habitacio> hab;
-    @ManyToOne(targetEntity=Metge.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "nomEsp", referencedColumnName = "nom")
-    private ArrayList<Metge> metg;
+    private int numHab;
+    
+    @Transient
+    private List<Hospital> hosp;   
+    
+    @Transient
+    private List<Habitacio> hab;
+ 
+    @Transient
+    private List<Metge> metg;
     
     public Especialitat(){}
     

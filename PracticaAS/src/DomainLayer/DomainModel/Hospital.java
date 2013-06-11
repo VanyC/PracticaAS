@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -15,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -30,7 +33,12 @@ public class Hospital implements Serializable {
       @Column(name="descripcio")
     private String descripcio;
     private ArrayList<Sanitari> sanitari;
-    private ArrayList<Especialitat> esp;
+    
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "EspecialitatHospital", 
+            joinColumns = { @JoinColumn(name = "especialitatNom") }, 
+            inverseJoinColumns = { @JoinColumn(name = "hospitalNom") })
+    private List<Especialitat> esp;
     @OneToMany(targetEntity=Habitacio.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "hospitalNom", referencedColumnName = "nom")
     private List<Habitacio> hab;
@@ -53,7 +61,7 @@ public class Hospital implements Serializable {
         return sanitari;
     }
     
-    public ArrayList<Especialitat> getEspecialitats(){
+    public List<Especialitat> getEspecialitats(){
         return esp;
     }
     
@@ -110,5 +118,9 @@ public class Hospital implements Serializable {
         }
         return dm;
         
+    }
+
+    public void setDescripcio(String descripcio) {
+        this.descripcio = descripcio;
     }
 }

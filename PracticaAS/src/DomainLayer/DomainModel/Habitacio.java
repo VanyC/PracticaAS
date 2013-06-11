@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 /**
  *
@@ -22,14 +24,13 @@ import javax.persistence.OneToMany;
 @Entity
 @Table(name = "habitacio", catalog = "practicaas")
 public class Habitacio  implements Serializable {
-    
-     @EmbeddedId
+    @EmbeddedId
     CompoundKeyHabitacio compoundkey = new CompoundKeyHabitacio();
-    @OneToMany(targetEntity=Ingres.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "numHab", referencedColumnName = "numero") 
+    @Transient 
     private ArrayList<Ingres> ingres = new ArrayList<Ingres>();
-    @Column(name="nomEsp")
-    private Especialitat e;
+    @OneToOne(targetEntity=Especialitat.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "nomEspecialitat",nullable=true,referencedColumnName="nom")
+    private String nomEspecialitat;
     
     public Habitacio(){}
     
@@ -38,7 +39,7 @@ public class Habitacio  implements Serializable {
     }
     
     public String getEspecialitatHabitacio(){
-        return e.getNomEspecialitat();
+        return nomEspecialitat;
     }
     
     public void vincula(Ingres i){
@@ -47,7 +48,7 @@ public class Habitacio  implements Serializable {
     
     public boolean comprovarHabitacio(String nomEsp){
         boolean b = false;
-        String ne = e.getNomEspecialitat();
+        String ne = nomEspecialitat;
         if (ne.equals(nomEsp)){
             for (Ingres i:ingres){
                 b = i.comprovarHabitacioLliure();

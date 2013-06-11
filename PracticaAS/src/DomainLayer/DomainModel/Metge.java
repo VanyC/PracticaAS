@@ -4,25 +4,31 @@
  */
 package DomainLayer.DomainModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Sandra
  */
-public class Metge extends Sanitari{
+@Entity
+public class Metge extends Sanitari implements Serializable{
+    
     private String categoria;
-    private Especialitat e;
+    @OneToOne(targetEntity=Especialitat.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "nomEspecialitat",nullable=true,referencedColumnName="nom")
+    private String nomEspecialitat;
     private ArrayList<Ingres> ingres;
     
     public String getCategoria(){
         return categoria;
     }
-    
-    public Especialitat getEspecialitat(){
-        return e;
-    }
-    
+        
     public ArrayList<Ingres> getIngressos(){
         return ingres;
     }
@@ -45,7 +51,7 @@ public class Metge extends Sanitari{
     }
     
     public String getEspecialitatMetge(){
-        return e.getNomEspecialitat();
+        return nomEspecialitat;
     }
     
     public void assignarIngres(Ingres i){

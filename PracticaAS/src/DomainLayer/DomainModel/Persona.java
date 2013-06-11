@@ -4,11 +4,22 @@
  */
 package DomainLayer.DomainModel;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
 /**
  *
  * @author Sandra
  */
-public class Persona {
+@Entity
+@Table(name = "persona", catalog = "practicaas")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Persona implements Serializable{
+    @Id
     private String dni;
     private String nom;
     

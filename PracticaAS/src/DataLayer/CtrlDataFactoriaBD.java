@@ -4,8 +4,14 @@
  */
 package DataLayer;
 
+import DomainLayer.DomainModel.Especialitat;
 import DomainLayer.DomainModel.Habitacio;
 import DomainLayer.DomainModel.Hospital;
+import DomainLayer.DomainModel.Ingres;
+import DomainLayer.DomainModel.Metge;
+import DomainLayer.DomainModel.Pacient;
+import DomainLayer.DomainModel.Persona;
+import DomainLayer.DomainModel.Sanitari;
 import java.util.ArrayList;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,11 +25,24 @@ public class CtrlDataFactoriaBD {
     
     public static CtrlDataFactoriaBD instance;
     private CtrlHospitalBD ctrlHospital = new CtrlHospitalBD();
+    private CtrlEspecialitatBD ctrlEspecialitat = new CtrlEspecialitatBD();
+    private CtrlHabitacioBD ctrlHabitacio = new CtrlHabitacioBD();
+    private CtrlIngresBD ctrlIngres = new CtrlIngresBD();
+    private CtrlMetgeBD ctrlMetge = new CtrlMetgeBD();
+    private CtrlPacientBD ctrlPacient = new CtrlPacientBD();
+    
     private Session session;
     
     public CtrlDataFactoriaBD() {
         AnnotationConfiguration config = new AnnotationConfiguration();
         config.addAnnotatedClass(Hospital.class);
+        config.addAnnotatedClass(Especialitat.class);
+        config.addAnnotatedClass(Habitacio.class);
+        config.addAnnotatedClass(Ingres.class);
+        config.addAnnotatedClass(Metge.class);
+        config.addAnnotatedClass(Pacient.class);
+        config.addAnnotatedClass(Persona.class);
+        config.addAnnotatedClass(Sanitari.class);
         try{
             config.configure("hibernate.cfg.xml");
             //new SchemaExport(config).create(true, true); 

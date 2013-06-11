@@ -4,69 +4,98 @@
  */
 package DomainLayer.DomainModel;
 
+import DomainLayer.DomainController.CtrlConsultarHospitalsLliuresPerEspecialitat;
+import DomainLayer.DomainController.CtrlIngressarPacient;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.Transient;
 
 /**
  *
  * @author Sandra
  */
+@Entity
 public class Ingres implements Serializable {
-    private Date dataInici;
+    @EmbeddedId
+    private CompoundKeyIngres cki;    
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataAlta;
-    private Habitacio hab;
-    private Hospital hosp;
-    private Pacient p;
-    private Metge m;
     
-    public Ingres(){}
+     @OneToOne(targetEntity=Habitacio.class, fetch = FetchType.EAGER)
+     @JoinColumns( {
+        @JoinColumn(name = "numHab", referencedColumnName = "numero"),
+        @JoinColumn(name = "nomHosp", referencedColumnName = "hospitalNom")
+    })
+    private CompoundKeyHabitacio hab;
+     
+    @Transient
+    private Hospital hosp;
+    @Transient
+    private Habitacio insHabitacio;
+ 
+    @OneToOne(targetEntity=Pacient.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "nTsPacient",referencedColumnName="nTs")
+    private String nTsPacient;
+    
+    @OneToOne(targetEntity=Metge.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "dniMetge",nullable=true,referencedColumnName="dni")
+    private String dniMetge;
+
+    public Ingres() {
+    }
+    
+    public Ingres(Date dataInici, String nTs){
+        cki = new CompoundKeyIngres(dataInici, nTs);
+    }
     
     public Date getDataInici(){
-        return dataInici;
+        return cki.getDataInici();
     }
     
     public Date getDataAlta(){
         return dataAlta;
     }
-    
-    public Habitacio getHabitacio(){
-        return hab;
-    }
-    
+
     public Hospital getHospital(){
         return hosp;
     }
     
-    public Pacient getPacient(){
-        return p;
+    public String getPacient(){
+        return nTsPacient;
     }
     
-    public Metge getMetge(){
-        return m;
+    public String getMetge(){
+        return dniMetge;
     }
     
     public void setDataInici(Date dat){
-        this.dataInici = dat;
+        this.cki.setDataInici(dat);
     }
     
     public void setDataAlta(Date dat){
         this.dataAlta = dat;
     }
     
-    public void setHabitacio(Habitacio hab){
-        this.hab = hab;
-    }
-    
     public void setHospital(Hospital h){
         this.hosp = h;
     }
     
-    public void setMetge(Metge m){
-        this.m = m;
+    public void setMetge(String m){
+        this.dniMetge = m;
     }
     
-    public void setPacient(Pacient p){
-        this.p = p;
+    public void setPacient(String p){
+        this.nTsPacient = p;
     }
     
     public boolean comprovarHabitacioLliure(){
@@ -82,9 +111,11 @@ public class Ingres implements Serializable {
         boolean b = p.comprovarPacient();
         Ingres i = new Ingres();
         i.hosp = h;
-        i.hab = hab;
-        i.p = p;
-        i.dataInici = dat;
+        i.hab.setNumero(hab.getCompoundKeyHabitacio().getNumero());
+        i.hab.sethospitalNom(hab.getCompoundKeyHabitacio().gethospitalNom());
+        insHabitacio=hab;
+        i.nTsPacient = p.getnTS();
+        i.cki.setDataInici(dat);
         hab.vincula(i);
     }
     
@@ -96,11 +127,19 @@ public class Ingres implements Serializable {
     public void assignarMetge(Metge m,Hospital h) throws Exception{
         if (this.dataAlta != null) throw new Exception("altaIngres");
         if (this.hosp != h) throw new Exception("noHospitalIngres");
-        String esp_hab = hab.getEspecialitatHabitacio();
+        String esp_hab =  insHabitacio.getEspecialitatHabitacio();
         if (m != null) throw new Exception("ingresAmbMetge");
         String esp_met = m.getEspecialitatMetge();
         if (esp_hab != esp_met) throw new Exception("noCoincideixenEspecialitats");
         m.assignarIngres(this);
-        this.m = m;
+        this.dniMetge = m.getDni();
    }
+
+    public CompoundKeyIngres getCki() {
+        return cki;
+    }
+
+    public void setCki(CompoundKeyIngres cki) {
+        this.cki = cki;
+    }
 }

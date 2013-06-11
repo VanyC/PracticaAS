@@ -6,14 +6,24 @@ package DomainLayer.DomainModel;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author Vane
  */
+@Embeddable
 public class CompoundKeyIngres implements Serializable{
+    @Column(name="dataInici")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataInici;
+    @Column(name="nTs")
     private String nTs;
+
+    public CompoundKeyIngres() {
+    }
 
     public Date getDataInici() {
         return dataInici;
