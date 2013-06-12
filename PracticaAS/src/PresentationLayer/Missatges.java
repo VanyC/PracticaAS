@@ -4,12 +4,16 @@
  */
 package PresentationLayer;
 
+import PresentationLayer.PresentationController.IngressarPacientView;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Vane
  */
 public class Missatges extends javax.swing.JFrame {
-
+    private IngressarPacientView IngPacView;
     /**
      * Creates new form Missatges
      */
@@ -30,7 +34,7 @@ public class Missatges extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        Label = new javax.swing.JLabel();
 
         jLabel5.setForeground(new java.awt.Color(255, 0, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -49,11 +53,16 @@ public class Missatges extends javax.swing.JFrame {
         });
 
         jButton2.setText("No");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jLabel6.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Text de l'error");
-        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
+        Label.setForeground(new java.awt.Color(255, 0, 0));
+        Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label.setText("Text de l'error");
+        Label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,13 +74,13 @@ public class Missatges extends javax.swing.JFrame {
                         .addGap(57, 57, 57)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
+                        .addGap(129, 129, 129)
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(36, 36, 36)
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(70, 70, 70)
+                        .addComponent(Label, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -79,12 +88,12 @@ public class Missatges extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(98, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(34, 34, 34)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
 
@@ -92,10 +101,16 @@ public class Missatges extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        AssignarMetge2 a = new AssignarMetge2();
-        a.setVisible(true);
+        try {
+            IngPacView.siMetgeClient();
+        } catch (Exception ex) {
+            Logger.getLogger(Missatges.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        IngPacView.noMetgeClient();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,11 +146,21 @@ public class Missatges extends javax.swing.JFrame {
             }
         });
     }
+    
+     public void mostrarMissatge(String txt) {
+        Label.setText(txt);
+        Label.setVisible(true);
+    }
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Label;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
+
+    public void inicializarMissatges() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

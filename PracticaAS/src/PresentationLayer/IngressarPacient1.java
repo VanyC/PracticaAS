@@ -4,12 +4,19 @@
  */
 package PresentationLayer;
 
+import DomainLayer.DomainModel.InfoHospital;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import PresentationLayer.PresentationController.IngressarPacientView;
 /**
  *
  * @author Vane
  */
 public class IngressarPacient1 extends javax.swing.JFrame {
-
+    private IngressarPacientView IngPacView;
     /**
      * Creates new form IngressarPacient1
      */
@@ -31,12 +38,12 @@ public class IngressarPacient1 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jnTs = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Label = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaHospitales = new javax.swing.JTable();
 
         jButton2.setText("Sortir");
 
@@ -56,10 +63,15 @@ public class IngressarPacient1 extends javax.swing.JFrame {
         jLabel1.setText("Hospitals Lliures per Especialitat");
 
         jButton1.setText("Cancelar");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jnTs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jnTsActionPerformed(evt);
             }
         });
 
@@ -72,51 +84,50 @@ public class IngressarPacient1 extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Text de l'error");
-        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
+        Label.setForeground(new java.awt.Color(255, 0, 0));
+        Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Label.setText("Text de l'error");
+        Label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaHospitales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Vall d'Hebron", "Passeig de la Vall d'Hebron", "Hospital amb àrea Materno-Infantil", "5,7,10,12"},
-                {"Sant Pau", "Sant Pau", "Hospiral General", "2,3,7"},
-                {"Can Ruti", "Badalona", "Hospital general", "8,10,12"},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Nom Hospital", "Adreça", "Descripció", "Habitacions"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaHospitales);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jButton3)
-                .addGap(32, 32, 32)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jButton3)
+                        .addGap(32, 32, 32)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jnTs, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(41, 41, 41)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Label, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 15, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,33 +135,83 @@ public class IngressarPacient1 extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jnTs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jnTsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jnTsActionPerformed
+       
+                   
+            String nTs = jnTs.getText();
+            if (nTs == null) try {
+                throw new Exception("nTs esta vacio", null);
+            } catch (Exception ex) {
+                Logger.getLogger(IngressarPacient1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        
+    }//GEN-LAST:event_jnTsActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        Missatges m = new Missatges();
-        m.setVisible(true);
+        String nTs = jnTs.getText();
+        int x = tablaHospitales.getSelectedRow();
+        try {
+            IngPacView.hospitalClient((String)tablaHospitales.getValueAt(x,0), 1, nTs);
+          
+            
+        } catch (Exception ex) {
+            Logger.getLogger(IngressarPacient1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+   
+    public void inicializarVista(ArrayList<InfoHospital> llistatHospitals) {
+                
+         
+        Object[][] infoHospitals = new Object[llistatHospitals.size()][4];        
+
+        for(int i = 0; i < llistatHospitals.size(); ++i) {
+                infoHospitals[i][0] = (String) llistatHospitals.get(i).nom;
+                infoHospitals[i][1] = (String) llistatHospitals.get(i).adreça;
+                infoHospitals[i][2] = (String) llistatHospitals.get(i).descripcio;
+                infoHospitals[i][3] = toStringArray(llistatHospitals.get(i).hab);
+        }
+
+        Object[] titolColumna = new Object[4];
+        titolColumna[0] = "Nom Hospital";
+        titolColumna[1] = "Adreça";
+        titolColumna[2] = "Descripció";
+        titolColumna[3] = "Habitacions";  
+
+        
+        tablaHospitales.setModel(new javax.swing.table.DefaultTableModel(infoHospitals,titolColumna));
+        
+        Label.setVisible(false);
+                       
+    }
+        
+    public void mostrarMissatge(String txt) {
+        Label.setText(txt);
+        Label.setVisible(true);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -182,10 +243,13 @@ public class IngressarPacient1 extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new IngressarPacient1().setVisible(true);
+               
             }
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Label;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -193,9 +257,18 @@ public class IngressarPacient1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jnTs;
+    private javax.swing.JTable tablaHospitales;
     // End of variables declaration//GEN-END:variables
+
+    private Object toStringArray(ArrayList<Integer> hab) {
+        String res = "";
+        for(int i = 0; i < hab.size() - 1; ++i) {
+            res = res + hab.get(i).toString() + ",";
+        }
+        res = res + hab.get(hab.size()-1).toString();
+        return res;
+    }
+
 }
