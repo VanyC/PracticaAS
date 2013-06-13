@@ -29,6 +29,7 @@ public class CtrlIngressarPacient {
     private int numH;
     private String nTS;
     private String dniM;
+    private String dniP;
     private CtrlAssignarMetgeAUnIngres ctrlA;
     
     public ArrayList<InfoHospital> obteHospitalsLliuresPerEspecialitat(String nomEsp) throws Exception{
@@ -55,7 +56,7 @@ public class CtrlIngressarPacient {
         Date data = new Date();
         Ingres i = new Ingres();
         i.crearIngres(h, hab, p, data);
-        
+        dniP = p.getDni();
         nomH = nomHosp;
         numH = numHab;
         nTS = nTs;
@@ -103,4 +104,7 @@ public class CtrlIngressarPacient {
         return correcte;
     }
     
+    public String obteDniPacient() {
+        return dniP;
+    }
 }

@@ -1,7 +1,5 @@
 
 package PresentationLayer;
-import PresentationLayer.PresentationController.*;
-
 import PresentationLayer.PresentationController.IngressarPacientView;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,11 +7,6 @@ import java.util.logging.Logger;
 public class Principal extends javax.swing.JFrame {
     
     IngressarPacientView IngPacView;
-    
-    public Principal() {
-        initComponents();
-        Label.setVisible(false);
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -102,20 +95,23 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    
+ 
     private void textEspecialitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEspecialitatActionPerformed
-       
-        
-            
+  
     }//GEN-LAST:event_textEspecialitatActionPerformed
-
+   
+    /* ---------------------- FUNCIONES IMPLEMENTADAS POR ELI --------------------------- */
+    
+    public Principal() {
+        initComponents();
+        Label.setVisible(false);
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        String nomEsp = textEspecialitat.getText();
+       
+        String nomEsp = textEspecialitat.getText();                         // Recoge el nombre de la especialidad introducida por el usuario.
         IngPacView = new IngressarPacientView();
-        try {
-            System.out.println("asdadsasd");
+        try {  
             IngPacView.especialitatClient(nomEsp);
         } catch (Exception ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,22 +120,16 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       System.exit(0);
+       System.exit(0);                                                      // Boton salir.
     }//GEN-LAST:event_jButton2ActionPerformed
     
-    
-    public void mostrarMissatge(String txt) {
+    public void mostrarMissatge(String txt) { // Muestra el mensaje txt en el campo "Text de l'error".
         Label.setText(txt);
         Label.setVisible(true);
     }
     
-    
-    
-    
-    
-    /**
-     * @param args the command line arguments
-     */
+    /* ------------------------ FIN -------------------------------------------------------*/
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

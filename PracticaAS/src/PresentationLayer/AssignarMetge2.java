@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package PresentationLayer;
 
 import DomainLayer.DomainModel.InfoMetge;
@@ -10,38 +7,12 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Vane
- */
 public class AssignarMetge2 extends javax.swing.JFrame {
 
     private IngressarPacientView IngPacView;
     
     public AssignarMetge2() {
         initComponents();
-    }
-
-    public void inicializarMetge(ArrayList<InfoMetge> llistatMetges) {
-        
-        Object[][] infoMetges = new Object[llistatMetges.size()][3];        
-
-        for(int i = 0; i < llistatMetges.size(); ++i) {
-                infoMetges[i][0] = (String) llistatMetges.get(i).dni;
-                infoMetges[i][1] = (String) llistatMetges.get(i).nom;
-                infoMetges[i][2] = (String) llistatMetges.get(i).cat;      
-        }
-
-        Object[] titolColumna = new Object[3];
-        titolColumna[0] = "Dni Metge";
-        titolColumna[1] = "Nom";
-        titolColumna[2] = "Categoria";  
-
-        
-        tablaMetges.setModel(new javax.swing.table.DefaultTableModel(infoMetges,titolColumna));
-        
-        Label.setVisible(false);
-
     }
     
     @SuppressWarnings("unchecked")
@@ -82,8 +53,18 @@ public class AssignarMetge2 extends javax.swing.JFrame {
         });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "..." }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gener", "Febrer", "Març", "Abril", "Maig", "Juny", "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Decembre" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2011", "2012", "2013", "2014" }));
 
@@ -166,12 +147,34 @@ public class AssignarMetge2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    
+    /* ---------------------- FUNCIONES IMPLEMENTADAS POR ELI --------------------------- */
+    
+     public void inicializarMetge(ArrayList<InfoMetge> llistatMetges) {         // La explicacion es la misma que para IngressaPacient1.
         
+        Object[][] infoMetges = new Object[llistatMetges.size()][3];        
+
+        for(int i = 0; i < llistatMetges.size(); ++i) {
+                infoMetges[i][0] = (String) llistatMetges.get(i).dni;
+                infoMetges[i][1] = (String) llistatMetges.get(i).nom;
+                infoMetges[i][2] = (String) llistatMetges.get(i).cat;      
+        }
+
+        Object[] titolColumna = new Object[3];
+        titolColumna[0] = "Dni Metge";
+        titolColumna[1] = "Nom";
+        titolColumna[2] = "Categoria";
+        
+        tablaMetges.setModel(new javax.swing.table.DefaultTableModel(infoMetges,titolColumna));
+        
+        Label.setVisible(false);
+    }
+     
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                                                                                //Aqui falta coger la fecha!
         int x = tablaMetges.getSelectedRow();
         try {
-            IngPacView.metgeClient((String)tablaMetges.getValueAt(x,0));
+            IngPacView.metgeClient((String)tablaMetges.getValueAt(x,0));        // Recoge la fila seleccionada por el usuario.
           
         } catch (Exception ex) {
             Logger.getLogger(IngressarPacient1.class.getName()).log(Level.SEVERE, null, ex);
@@ -179,13 +182,25 @@ public class AssignarMetge2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.exit(0);
+        System.exit(0);                                                         // Boton sortir.
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:                                    // No hace nada, pero no puedo borrarla.
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:                                    // No hace nada, pero no puedo borrarla.
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+     public void mostrarMissatge(String txt) {                                  // Muestra el mensaje txt en el campo "Text de l'error"
+        Label.setText(txt);
+        Label.setVisible(true);
+    }
+    
+    /* ------------------------ FIN -------------------------------------------------------*/
+    
+     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -211,6 +226,7 @@ public class AssignarMetge2 extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AssignarMetge2().setVisible(true);
             }
