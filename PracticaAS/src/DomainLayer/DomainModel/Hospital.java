@@ -124,31 +124,31 @@ public class Hospital implements Serializable {
 
     public void sort(ArrayList<InfoMetge> dm){
         final int N = dm.size();
-        //quicksort(dm,0,N-1);
+        quicksort(dm,0,N-1);
     }
     
-   /* public void quicksort(ArrayList<InfoMetge> dm, int inici, int fi){
+    public void quicksort(ArrayList<InfoMetge> dm, int inici, int fi){
         if(inici>=fi) return ;
         String pivote = dm.get(inici).nom;
         int izq    = inici+1;
         int der    = fi;
         while(izq<=der) {
-            while(izq<=fi   && ((dm.get(izq).nom.compareTo(pivote))) izq++;
-            while(der>inici && v[der]>=pivote) der--;
+            while(izq<=fi   && ((dm.get(izq).nom.compareTo(pivote))<0)) izq++;
+            while(der>inici && ((dm.get(der).nom.compareTo(pivote))>0)) der--;
             if(izq<der) {
-                int tmp = v[izq];
-                v[izq]  = v[der];
-                v[der]  = tmp;
+                InfoMetge tmp = dm.get(izq);
+                dm.set((izq),dm.get(der));
+                dm.set((der), tmp);
             }
         }
         if(der>inici) {
-            int tmp  = v[inici];
-            v[inici]= v[der];
-            v[der]   = tmp;
+            InfoMetge tmp = dm.get(inici);
+            dm.set(inici,dm.get(der));
+            dm.set((der), tmp);
         }
-        quickSort(v,inici, der-1);
-        quickSort(v, der+1, fi);
-    }*/
+        quicksort(dm,inici, der-1);
+        quicksort(dm, der+1, fi);
+    }
     
     public void setDescripcio(String descripcio) {
         this.descripcio = descripcio;
