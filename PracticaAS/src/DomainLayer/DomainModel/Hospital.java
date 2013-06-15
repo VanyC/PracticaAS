@@ -115,6 +115,7 @@ public class Hospital implements Serializable {
             boolean b = e.teEspecialitat(nomEsp);
             if (b == false) throw new Exception("noEspecialitatEnHospital");
             dm = e.obteMetges();
+            if (dm.size() == 0) throw new Exception("NoHiHaMetges");
         }
         return dm;
         
