@@ -117,10 +117,39 @@ public class Hospital implements Serializable {
             dm = e.obteMetges();
             if (dm.size() == 0) throw new Exception("NoHiHaMetges");
         }
+        sort(dm);
         return dm;
         
     }
 
+    public void sort(ArrayList<InfoMetge> dm){
+        final int N = dm.size();
+        //quicksort(dm,0,N-1);
+    }
+    
+   /* public void quicksort(ArrayList<InfoMetge> dm, int inici, int fi){
+        if(inici>=fi) return ;
+        String pivote = dm.get(inici).nom;
+        int izq    = inici+1;
+        int der    = fi;
+        while(izq<=der) {
+            while(izq<=fi   && ((dm.get(izq).nom.compareTo(pivote))) izq++;
+            while(der>inici && v[der]>=pivote) der--;
+            if(izq<der) {
+                int tmp = v[izq];
+                v[izq]  = v[der];
+                v[der]  = tmp;
+            }
+        }
+        if(der>inici) {
+            int tmp  = v[inici];
+            v[inici]= v[der];
+            v[der]   = tmp;
+        }
+        quickSort(v,inici, der-1);
+        quickSort(v, der+1, fi);
+    }*/
+    
     public void setDescripcio(String descripcio) {
         this.descripcio = descripcio;
     }
