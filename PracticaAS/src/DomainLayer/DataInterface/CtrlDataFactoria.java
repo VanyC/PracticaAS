@@ -4,6 +4,12 @@
  */
 package DomainLayer.DataInterface;
 
+import DataLayer.CtrlEspecialitatBD;
+import DataLayer.CtrlHabitacioBD;
+import DataLayer.CtrlHospitalBD;
+import DataLayer.CtrlIngresBD;
+import DataLayer.CtrlMetgeBD;
+import DataLayer.CtrlPacientBD;
 /**
  *
  * @author Roberto
@@ -31,42 +37,42 @@ public class CtrlDataFactoria {
     
     public CtrlEspecialitat getCtrlEspecialitat(){
         if (ctrlE == null){
-            // creamos la clase
+            ctrlE = new CtrlEspecialitatBD();
         }
         return ctrlE;
     }
     
     public CtrlPacient getCtrlPacient(){
         if (ctrlP == null){
-            // creamos la clase
+            ctrlP = new CtrlPacientBD();
         }
         return ctrlP;
     }
     
     public CtrlIngres getCtrlIngres(){
         if (ctrlI == null){
-            // creamos la clase
+            ctrlI = new CtrlIngresBD();
         }
         return ctrlI;
     }
     
     public CtrlHospital getCtrlHospital(){
         if (ctrlH == null){
-            // creamos la clase
+            ctrlH = new CtrlHospitalBD();
         }
         return ctrlH;
     }
     
     public CtrlMetge getCtrlMetge(){
         if (ctrlM == null){
-            // creamos la clase
+            ctrlM = new CtrlMetgeBD();
         }
         return ctrlM;
     }
     
     public CtrlHabitacio getCtrlHabitacio(){
         if (ctrlHab == null){
-            // creamos la clase
+            ctrlHab = new CtrlHabitacioBD();
         }
         return ctrlHab;
     }
